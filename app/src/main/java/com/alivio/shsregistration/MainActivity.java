@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         etLastname = findViewById(R.id.etLastname);
         etFirstname = findViewById(R.id.etFirstname);
         etMiddlename = findViewById(R.id.etMiddlename);
+        rbMale = findViewById(R.id.rbMale);
+        rbFemale = findViewById(R.id.rbFemale);
         cbxReq1 = findViewById(R.id.cbxReq1);
         cbxReq2 = findViewById(R.id.cbxReq2);
         cbxReq3 = findViewById(R.id.cbxReq3);
@@ -38,6 +40,36 @@ public class MainActivity extends AppCompatActivity {
         Lastname = etLastname.getText().toString();
         Firstname = etFirstname.getText().toString();
         Middlename = etMiddlename.getText().toString();
+
+        if (rbMale.isChecked()) {
+            Gender = "Male";
+        }
+        else {
+            Gender = "Female";
+        }
+
+        if(cbxReq1.isChecked()) {
+            Requirements = cbxReq1.getText().toString() + "\n";
+        }
+        if(cbxReq2.isChecked()) {
+            Requirements = Requirements + cbxReq2.getText().toString() + "\n";
+        }
+        if(cbxReq3.isChecked()) {
+            Requirements = Requirements + cbxReq3.getText().toString() + "\n";
+        }
+        if(cbxReq4.isChecked()) {
+            Requirements = Requirements + cbxReq4.getText().toString() + "\n";
+        }
+
+        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        intent.putExtra("academicProgram", academicProgram);
+        intent.putExtra("lastname", Lastname);
+        intent.putExtra("firstname", Firstname);
+        intent.putExtra("middlename", Middlename);
+        intent.putExtra("gender", Gender);
+        intent.putExtra("requirements", Requirements);
+        startActivity(intent);
+
     }
 
 
